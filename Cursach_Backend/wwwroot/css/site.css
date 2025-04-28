@@ -38,3 +38,19 @@ div .mobiles {
     padding: 15px 10%;
     margin: 5% 20% 30% 20%;
 }
+
+div .btn {
+    width: 5%;
+    height: 20px;
+    padding: 5px;
+    border-radius: 20%;
+    background-color: white;
+    border-block-color: aqua;
+    text-decoration-color: none;
+    text-decoration: none;
+}
+
+.margin_return_btn{
+    margin-top: 5%;
+    margin-inline-end: auto;
+}

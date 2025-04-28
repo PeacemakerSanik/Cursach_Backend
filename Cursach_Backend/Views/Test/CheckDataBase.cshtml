@@ -1,0 +1,26 @@
+﻿@model IEnumerable<IMSIModel>
+
+<h2>Проверка подключения к БД</h2>
+
+@if (Model.Any())
+{
+    <h3>Последние 10 записей:</h3>
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>@item.Id: @item.IMSI</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Нет данных в таблице</p>
+}
+
+<p>Статус подключения: <strong style="color:green">Успешно</strong></p>
+
+<div class="margin_return_btn">
+    <a asp-controller="Home" asp-action="Index" class="btn btn-primary">
+        Перейти на главную
+    </a>
+</div>

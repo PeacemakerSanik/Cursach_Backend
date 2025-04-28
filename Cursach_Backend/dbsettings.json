@@ -1,0 +1,5 @@
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Server=DESKTOP-84UKUUT; Database=Verified_IMSI; Trusted_Connection=True; TrustServerCertificate=True;"
+  }
+}

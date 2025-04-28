@@ -2,7 +2,7 @@
 {
     public class IMSIModel
     {
-        public int ID { get; set; }
-        public int IMSI {  get; set; }
+        public int Id { get; set; }
+        public decimal IMSI {  get; set; }
     }
 }

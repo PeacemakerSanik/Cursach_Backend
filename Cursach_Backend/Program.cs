@@ -8,7 +8,7 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<Verified_IMSI_Context>(options =>
 {
-    options.UseSqlServer("Server=DESKTOP-84UKUUT; Database=Verified_IMSI; Trusted_Connection=True; TrustServerCertificate=True;");
+    options.UseSqlServer(new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("dbsettings.json").Build().GetConnectionString("DefaultConnection"));
 });
 
 var app = builder.Build();
