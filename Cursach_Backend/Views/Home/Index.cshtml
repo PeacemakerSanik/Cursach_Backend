@@ -1,6 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Базовая станция";
 }
+
+@model List<IMSIModel>
+
 <div>
     <a asp-controller="Test" asp-action="CheckDatabase" class="btn btn-primary">
         Перейти к тесту БД
@@ -9,6 +12,30 @@
 
 <div class="main">
     <div class="mobiles">
-        
+        <h3>Подключённые устройства:</h3>
+        <ul class="list-group">
+            @foreach (var device in Model)
+            {
+                <li class="list-group-item">
+                    <a asp-controller="Ping"
+                       asp-action="Details"
+                       asp-route-id="@device.IMSI"
+                       class="btn btn-link">
+                       Устройство: @device.IMSI
+                    </a>
+                </li>
+            }
+        </ul>
     </div>
 </div>
+<script>
+    setInterval(function() {
+        fetch('/Home/CheckUpdates')
+            .then(response => response.json())
+            .then(data => {
+                if(data.needsRefresh) {
+                    location.reload(); // Грубое обновление страницы
+                }
+            });
+    }, 2000);
+</script>

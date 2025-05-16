@@ -1,0 +1,36 @@
+﻿@model IMSIModel
+
+@{
+    ViewData["Title"] = "Детали устройства";
+}
+
+<div class="device-card">
+    <div class="card-header">
+        <h5 class="mb-0">Устройство #@Model.IMSI</h5> <!-- Используем IMSI как идентификатор -->
+    </div>
+
+    <div class="card-body">
+        <dl class="device-properties">
+            <div class="d-flex flex-wrap mb-3">
+                <dt>IMSI:</dt>
+                <dd>@Model.IMSI</dd>
+            </div>
+
+            <div class="d-flex flex-wrap mb-3">
+                <dt>Номер телефона:</dt>
+                <dd>@(string.IsNullOrEmpty(Model.Phone_Number) ? "Нет данных" : Model.Phone_Number)</dd>
+            </div>
+
+            <div class="d-flex flex-wrap mb-3">
+                <dt>Ki (ключ идентификации):</dt>
+                <dd class="text-truncate">@Model.Ki</dd>
+            </div>
+        </dl>
+
+        <div class="mt-4">
+            <a asp-action="Index" class="btn btn-outline-primary">
+                <i class="bi bi-arrow-left"></i> Назад к списку
+            </a>
+        </div>
+    </div>
+</div>

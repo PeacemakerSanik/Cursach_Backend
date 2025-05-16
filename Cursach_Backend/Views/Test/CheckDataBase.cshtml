@@ -8,7 +8,7 @@
     <ul>
         @foreach (var item in Model)
         {
-            <li>@item.Id: @item.IMSI</li>
+            <li>@item.Id: <p>IMSI: @item.IMSI</p> <p>Номер телефона: @(string.IsNullOrEmpty(item.Phone_Number) ? "No information": item.Phone_Number)</p></li>
         }
     </ul>
 }

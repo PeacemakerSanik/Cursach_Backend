@@ -7,6 +7,16 @@ namespace Cursach_Backend.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private static DateTime _lastUpdate = DateTime.MinValue;
+
+        [HttpGet]
+        public JsonResult CheckUpdates()
+        {
+            var currentLastUpdate = DeviceStorage.LastChanged;
+            bool needsRefresh = currentLastUpdate > _lastUpdate;
+            _lastUpdate = currentLastUpdate;
+            return Json(new { needsRefresh });
+        }
 
         public HomeController(ILogger<HomeController> logger)
         {
@@ -15,7 +25,7 @@ namespace Cursach_Backend.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            return View(DeviceStorage.GetAllDevices());
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
